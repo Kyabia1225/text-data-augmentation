@@ -83,7 +83,6 @@ def _eda(sent, p=0.1):
     length = len(sent_cut)
     n = int(length * p)
     if n == 0:
-        # return []
         n = 1
 
     prob = word_prob(sent_cut)
