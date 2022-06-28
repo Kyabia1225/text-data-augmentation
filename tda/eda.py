@@ -83,7 +83,8 @@ def _eda(sent, p=0.1):
     length = len(sent_cut)
     n = int(length * p)
     if n == 0:
-        return []
+        # return []
+        n = 1
 
     prob = word_prob(sent_cut)
     res.add(synonym_replacement(sent_cut, prob, n))
@@ -101,3 +102,6 @@ def eda(inp, p=0.1):
         for sent in tqdm(inp):
             res.extend(_eda(sent, p))
     return res
+
+if __name__ == '__main__':
+    print(eda('新冠肺炎疫情仍在全球蔓延。'))

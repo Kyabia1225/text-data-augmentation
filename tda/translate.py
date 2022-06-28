@@ -4,9 +4,10 @@ import urllib
 import random
 import json
 from tqdm import tqdm
+import time
 
-appid = '20200403000411315'  # 填写你的appid
-secretKey = '7HjoylhCni3lBsLmeWIr'  # 填写你的密钥
+appid = '20220118001058243'  # 填写你的appid
+secretKey = 'dB3SgDxAVFzj6aTOCFTW'  # 填写你的密钥
 
 httpClient = None
 myurl = '/api/trans/vip/translate'
@@ -35,6 +36,7 @@ def _translate(sent, from_lan, to_lan):
 
 def translate_and_back(sent):
     res1 = _translate(sent, 'zh', 'en')
+    time.sleep(1)
     return _translate(res1, 'en', 'zh')
 
 
@@ -46,3 +48,7 @@ def translate(inp):
         for sent in tqdm(inp):
             res.append(translate_and_back(sent))
     return res
+
+
+if __name__ == '__main__':
+    print(translate('向各位民主党派人士表示诚挚感谢。'))
